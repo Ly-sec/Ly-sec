@@ -1,16 +1,22 @@
-## Hi there 👋
+# Hi there, I'm Ly-sec 👋
 
-<!--
-**Ly-sec/Ly-sec** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+I'm a passionate developer exploring **system configuration**, **functional programming**, and **developer tooling**. I’m currently diving deep into **Rust** and **Nix**, building tools to make development workflows more efficient and reproducible.
 
-Here are some ideas to get you started:
+## 🔧 Technologies & Tools
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+- **Programming Languages:** JavaScript, Rust, Nix
+- **Tools:** NixOS, Cargo, Git
+- **OS:** NixOS
+
+## 🌱 I’m currently learning
+
+- Rust: Building small CLI tools and experimenting with Rust’s ecosystem.
+- Nix: Advanced expressions, flakes, and reproducible builds
+
+## 🚀 My Projects
+
+- [swiftfetch](https://github.com/Ly-sec/swiftfetch): A fast and efficient fetch tool for system information written in Rust, designed for simplicity and performance. 
+
+## 📊 GitHub Stats
+
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=Ly-sec&show_icons=true&theme=radical) &nbsp; ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Ly-sec&layout=compact&theme=radical)
