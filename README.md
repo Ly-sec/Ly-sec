@@ -4,9 +4,12 @@ I'm a passionate developer exploring **system configuration**, **functional prog
 
 ## 🔧 Technologies & Tools
 
-- **Programming Languages:** JavaScript, Rust, Nix
-- **Tools:** NixOS, Cargo, Git
-- **OS:** NixOS
+![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![NixOS](https://img.shields.io/badge/NixOS-5277C3?style=for-the-badge&logo=nixos&logoColor=white)
+![Nix](https://img.shields.io/badge/Nix-5277C3?style=for-the-badge&logo=nixos&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
 ## 🌱 I’m currently learning
 
@@ -15,7 +18,8 @@ I'm a passionate developer exploring **system configuration**, **functional prog
 
 ## 🚀 My Projects
 
-- [swiftfetch](https://github.com/Ly-sec/swiftfetch): A fast and efficient fetch tool for system information written in Rust, designed for simplicity and performance. 
+### [swiftfetch](https://github.com/Ly-sec/swiftfetch)
+A fast and efficient fetch tool for system information written in Rust, designed for simplicity and performance.
 
 ## 📊 GitHub Stats
 
