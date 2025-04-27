@@ -1,6 +1,6 @@
 # Hi there, I'm Ly-sec 👋
 
-I'm a passionate **cybersecurity enthusiast** and **developer**. My interests span **security research**, **red teaming**, **malware analysis**, and **functional programming**. I'm constantly learning and improving my skills in areas like **NixOS**, **Rust**, and **ethical hacking**.
+I'm a passionate **cybersecurity enthusiast** and **developer**. My interests span **security research**, **malware analysis**, and **functional programming**. I'm constantly learning and improving my skills in areas like **NixOS**, **Rust**, and **ethical hacking**.
 
 ## 🔧 Technologies & Tools
 
@@ -9,12 +9,10 @@ I'm a passionate **cybersecurity enthusiast** and **developer**. My interests sp
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![NixOS](https://img.shields.io/badge/NixOS-5277C3?style=for-the-badge&logo=nixos&logoColor=white)
 ![Nix](https://img.shields.io/badge/Nix-5277C3?style=for-the-badge&logo=nixos&logoColor=white)
-![Wireshark](https://img.shields.io/badge/Wireshark-1679A2?style=for-the-badge&logo=wireshark&logoColor=white)
-![Metasploit](https://img.shields.io/badge/Metasploit-7701DF?style=for-the-badge&logo=metasploit&logoColor=white)
 
 ## 🌱 I’m currently learning
 
-- **Cybersecurity**: Red Teaming, **Incident Response**, and **Malware Analysis**.
+- **Cybersecurity**: Incident Response and Malware Analysis.
 - **Rust**: Building small CLI tools for sysadmins and experimenting with Rust’s ecosystem.
 - **NixOS & Nix**: Advanced expressions, flakes, and reproducible builds.
 
