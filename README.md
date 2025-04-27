@@ -1,6 +1,6 @@
 # Hi there, I'm Ly-sec 👋
 
-I'm a passionate developer exploring **system configuration**, **functional programming**, and **developer tooling**. I’m currently diving deep into **Rust** and **Nix**, building tools to make development workflows more efficient and reproducible.
+I'm a passionate **cybersecurity enthusiast** and **developer**. My interests span **security research**, **red teaming**, **malware analysis**, and **functional programming**. I'm constantly learning and improving my skills in areas like **NixOS**, **Rust**, and **ethical hacking**.
 
 ## 🔧 Technologies & Tools
 
@@ -9,14 +9,19 @@ I'm a passionate developer exploring **system configuration**, **functional prog
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![NixOS](https://img.shields.io/badge/NixOS-5277C3?style=for-the-badge&logo=nixos&logoColor=white)
 ![Nix](https://img.shields.io/badge/Nix-5277C3?style=for-the-badge&logo=nixos&logoColor=white)
-![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Wireshark](https://img.shields.io/badge/Wireshark-1679A2?style=for-the-badge&logo=wireshark&logoColor=white)
+![Metasploit](https://img.shields.io/badge/Metasploit-7701DF?style=for-the-badge&logo=metasploit&logoColor=white)
 
 ## 🌱 I’m currently learning
 
-- Rust: Building small CLI tools and experimenting with Rust’s ecosystem.
-- Nix: Advanced expressions, flakes, and reproducible builds
+- **Cybersecurity**: Red Teaming, **Incident Response**, and **Malware Analysis**.
+- **Rust**: Building small CLI tools for sysadmins and experimenting with Rust’s ecosystem.
+- **NixOS & Nix**: Advanced expressions, flakes, and reproducible builds.
 
 ## 🚀 My Projects
+
+### [nixos](https://github.com/Ly-sec/nixos)
+My current NixOS setup. Not really a project, but I love tinkering with it <3.
 
 ### [swiftfetch](https://github.com/Ly-sec/swiftfetch)
 A fast and efficient fetch tool for system information written in Rust, designed for simplicity and performance.
