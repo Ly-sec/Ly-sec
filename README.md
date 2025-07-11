@@ -18,6 +18,9 @@ I'm a passionate **cybersecurity enthusiast** and **developer**. My interests sp
 
 ## 🚀 My Projects
 
+### [Noctalia](https://github.com/Ly-sec/Noctalia)
+The quickshell setup I use in my personal nixos setup.
+
 ### [nixos](https://github.com/Ly-sec/nixos)
 My current NixOS setup. Not really a project, but I love tinkering with it <3.
 
