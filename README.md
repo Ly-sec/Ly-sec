@@ -4,7 +4,7 @@ I'm a passionate **cybersecurity enthusiast** and **developer**. My interests sp
 
 ## 🔧 Technologies & Tools
 
-![QML](https://img.shields.io/badge/qml-000000?style=for-the-badge&logo=qml&logoColor=white)
+![QML](https://img.shields.io/badge/QML-41CD52?style=for-the-badge&logo=qt&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
