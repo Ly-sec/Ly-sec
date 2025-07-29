@@ -21,8 +21,11 @@ I'm a passionate **cybersecurity enthusiast** and **developer**. My interests sp
 ### [Noctalia](https://github.com/Ly-sec/Noctalia)
 The quickshell setup I use in my personal nixos setup.
 
+### [dotfiles](https://github.com/Ly-sec/dotfiles)
+My current CachyOS dotfiles, also using Noctalia just like with NixOS.
+
 ### [nixos](https://github.com/Ly-sec/nixos)
-My current NixOS setup. Not really a project, but I love tinkering with it <3.
+My current NixOS setup, using Noctalia.
 
 ### [swiftfetch](https://github.com/Ly-sec/swiftfetch)
 A fast and efficient fetch tool for system information written in Rust, designed for simplicity and performance.
