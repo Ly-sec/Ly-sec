@@ -39,4 +39,4 @@ A fast and efficient fetch tool for system information written in Rust, designed
 
 ## 📊 GitHub Stats
 
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=Ly-sec&show_icons=true&theme=radical) &nbsp; ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Ly-sec&layout=compact&theme=radical)
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=ly-sec&theme=ayu-mirage&show_icons=true&hide_border=false&count_private=true)
