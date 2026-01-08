@@ -2,7 +2,7 @@
 
 # 👋 Hey, I'm Ly-sec
 
-### Developer • Designer • Open Source Enthusiast
+### Developer • Open Source Enthusiast
 
 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=6C8EEF&center=true&vCenter=true&width=435&lines=Building+Beautiful+Interfaces;Crafting+Efficient+Tools;Always+Learning" alt="Typing SVG" />
 
