@@ -101,8 +101,4 @@ A fast and efficient system information tool. Designed for speed, simplicity, an
 
 ### ⭐ "Good design is obvious. Great design is transparent."
 
-![Profile Views](https://komarev.com/ghpvc/?username=ly-sec&color=6C8EEF&style=for-the-badge&label=Visitors)
-
-**Thanks for stopping by!** Feel free to explore my repos and reach out if you want to collaborate 🚀
-
 </div>
