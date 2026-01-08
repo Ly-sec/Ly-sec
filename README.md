@@ -99,6 +99,6 @@ A fast and efficient system information tool. Designed for speed, simplicity, an
 
 <div align="center">
 
-### ⭐ "Good design is obvious. Great design is transparent."
+### "Good design is obvious. Great design is transparent."
 
 </div>
