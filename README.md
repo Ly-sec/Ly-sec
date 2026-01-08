@@ -67,8 +67,6 @@ A sleek and minimal desktop shell thoughtfully crafted for Wayland.
 ### 💻 [Dotfiles](https://github.com/Ly-sec/dotfiles)
 My personal configuration files featuring custom setups and various optimizations for a seamless workflow.
 
-**Stack:** Shell • Config
-
 </td>
 </tr>
 <tr>
@@ -77,15 +75,11 @@ My personal configuration files featuring custom setups and various optimization
 ### ⚙️ [NixOS Config](https://github.com/Ly-sec/nixos)
 Declarative system configuration with flakes and home-manager. Fully reproducible and well-documented.
 
-**Stack:** Nix • Shell
-
 </td>
 <td width="50%">
 
 ### ⚡ [SwiftFetch](https://github.com/Ly-sec/swiftfetch)
 A fast and efficient system information tool. Designed for speed, simplicity, and minimal resource usage.
-
-**Stack:** Rust
 
 </td>
 </tr>
@@ -94,13 +88,6 @@ A fast and efficient system information tool. Designed for speed, simplicity, an
 ---
 
 ## 📊 GitHub Statistics
-
-<div align="center">
-
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=ly-sec&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true" />
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ly-sec&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" />
-
-</div>
 
 <div align="center">
 
