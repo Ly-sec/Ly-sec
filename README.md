@@ -57,15 +57,11 @@ A sleek and minimal desktop shell thoughtfully crafted for Wayland
 ### 🌙 [Noctalia](https://github.com/noctalia-dev/noctalia-shell)
 A sleek and minimal desktop shell thoughtfully crafted for Wayland.
 
-**Stack:** QML • Shell
-
 </td>
 <td width="50%">
 
 ### 💻 [Dotfiles](https://github.com/Ly-sec/dotfiles)
 My personal configuration files featuring custom setups and various optimizations for a seamless workflow.
-
-**Stack:** Shell • Config
 
 </td>
 </tr>
@@ -74,8 +70,6 @@ My personal configuration files featuring custom setups and various optimization
 
 ### ⚡ [SwiftFetch](https://github.com/Ly-sec/swiftfetch)
 A fast and efficient system information tool. Designed for speed, simplicity, and minimal resource usage.
-
-**Stack:** Rust
 
 </td>
 </tr>
