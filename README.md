@@ -59,8 +59,6 @@ A sleek and minimal desktop shell thoughtfully crafted for Wayland
 ### 🌙 [Noctalia](https://github.com/noctalia-dev/noctalia-shell)
 A sleek and minimal desktop shell thoughtfully crafted for Wayland.
 
-**Stack:** QML • Shell
-
 </td>
 <td width="50%">
 
