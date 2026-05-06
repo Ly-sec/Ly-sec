@@ -10,23 +10,12 @@ if (!token) {
 
 const username = config.username;
 
+const DAY_MS = 24 * 60 * 60 * 1000;
 const now = new Date();
-const currentYearStart = new Date(
-  now.getFullYear() - 1,
-  now.getMonth() + 1,
-  1,
-).toISOString();
 const currentYearEnd = now.toISOString();
-const lastYearStart = new Date(
-  now.getFullYear() - 2,
-  now.getMonth() + 1,
-  1,
-).toISOString();
-const lastYearEnd = new Date(
-  now.getFullYear() - 1,
-  now.getMonth() + 1,
-  0,
-).toISOString();
+const currentYearStart = new Date(now.getTime() - 364 * DAY_MS).toISOString();
+const lastYearEnd = new Date(now.getTime() - 365 * DAY_MS).toISOString();
+const lastYearStart = new Date(now.getTime() - 729 * DAY_MS).toISOString();
 
 const pinnedReposQuery = config.pinned
   .map(
@@ -269,9 +258,16 @@ export async function generateStats() {
     count: d.contributionCount,
   }));
 
-  const currentMonthIdx = new Date().getMonth();
+  const currentDate = new Date();
+  const currentMonthIdx = currentDate.getMonth();
+  const currentYear = currentDate.getFullYear();
   const currentDays = days.filter(
-    (d: any) => new Date(d.date).getMonth() === currentMonthIdx,
+    (d: any) => {
+      const date = new Date(d.date);
+      return (
+        date.getMonth() === currentMonthIdx && date.getFullYear() === currentYear
+      );
+    },
   );
 
   const dayCounts: Record<number, number> = {
@@ -296,14 +292,20 @@ export async function generateStats() {
   });
 
   const repoCounts: Record<string, number> = {};
+  const repoLanguages: Record<string, string> = {};
   if (user.currentYear.commitContributionsByRepository) {
     user.currentYear.commitContributionsByRepository.forEach(
       (repoContrib: any) => {
         const repoName = repoContrib.repository.name;
+        const lang = repoContrib.repository.primaryLanguage?.name || null;
+        if (lang) repoLanguages[repoName] = lang;
 
         repoContrib.contributions.nodes.forEach((node: any) => {
           const date = new Date(node.occurredAt);
-          if (date.getMonth() === currentMonthIdx) {
+          if (
+            date.getMonth() === currentMonthIdx &&
+            date.getFullYear() === currentYear
+          ) {
             repoCounts[repoName] =
               (repoCounts[repoName] || 0) + node.commitCount;
           }
@@ -318,11 +320,10 @@ export async function generateStats() {
   let monthlyFocusHtml = "Structuring <b>ideas</b> into reality.";
   if (focusSorted.length > 0) {
     const topRepo = focusSorted[0][0];
-    const topLang = languages[0]?.name || "Code";
-    const activityType = getActivityType(topLang);
+    const topLang = repoLanguages[topRepo] || "Code";
     const monthName = new Date().toLocaleString("default", { month: "long" });
 
-    monthlyFocusHtml = `${monthName} focus: <span class="text-accent tracking-wide">${topRepo}</span>, mostly <span class="text-accent tracking-wide">${topLang}</span> (${activityType}).`;
+    monthlyFocusHtml = `${monthName}'s orbit centers on <span class="text-accent tracking-wide">${topRepo}</span>, with <span class="text-accent tracking-wide">${topLang}</span> as the dominant dialect.`;
   }
 
   const chronicle = {

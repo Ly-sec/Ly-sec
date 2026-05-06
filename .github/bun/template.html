@@ -230,8 +230,8 @@
       <!-- Graph Row -->
       <section class="flex flex-col gap-4 opacity-40 hover:opacity-100 transition-opacity duration-700">
          <div class="flex justify-between items-center font-mono text-[8px] uppercase tracking-[0.3em] text-onSurfaceVariant">
-           <span>Harmonic Distribution (Last 365 Days)</span>
-           <span>Temporal Variance Matrix</span>
+           <span>Contribution Signal (Rolling 365 Days)</span>
+           <span>Raw Daily Counts</span>
          </div>
          <div class="h-20 w-full relative">
             <svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 1000 80" id="chronicle_svg">
@@ -366,27 +366,109 @@
             const timeline = c.stats.timeline;
 
             if (timeline.length > 0) {
+              // Keep defs, clear previous rendered paths if rerendering.
+              Array.from(svg.querySelectorAll(".timeline-layer")).forEach((el) => el.remove());
               const maxCount = Math.max(...timeline.map((d) => d.count), 1);
               const stepX = width / (timeline.length - 1);
               let points = timeline.map((d, i) => [
                 i * stepX,
                 height - (d.count / maxCount) * (height - 5),
               ]);
-              let dPath = `M ${points[0][0]},${points[0][1]}`;
-              for (let i = 0; i < points.length - 1; i++) {
-                const p0 = points[i], p1 = points[i + 1];
-                const cp1x = p0[0] + (p1[0] - p0[0]) / 2, cp1y = p0[1];
-                const cp2x = p0[0] + (p1[0] - p0[0]) / 2, cp2y = p1[1];
-                dPath += ` C ${cp1x},${cp1y} ${cp2x},${cp2y} ${p1[0]},${p1[1]}`;
+
+              let linePath = `M ${points[0][0]},${points[0][1]}`;
+              for (let i = 1; i < points.length; i++) {
+                linePath += ` L ${points[i][0]},${points[i][1]}`;
               }
 
+              let areaPath = `${linePath} L ${points[points.length - 1][0]},${height} L 0,${height} Z`;
+
+              const areaGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+              areaGradient.setAttribute("id", "area-grad");
+              areaGradient.setAttribute("x1", "0");
+              areaGradient.setAttribute("x2", "0");
+              areaGradient.setAttribute("y1", "0");
+              areaGradient.setAttribute("y2", "1");
+              areaGradient.classList.add("timeline-layer");
+
+              const stopTop = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+              stopTop.setAttribute("offset", "0%");
+              stopTop.setAttribute("stop-color", "#39BAE6");
+              stopTop.setAttribute("stop-opacity", "0.25");
+              const stopBottom = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+              stopBottom.setAttribute("offset", "100%");
+              stopBottom.setAttribute("stop-color", "#39BAE6");
+              stopBottom.setAttribute("stop-opacity", "0.02");
+              areaGradient.appendChild(stopTop);
+              areaGradient.appendChild(stopBottom);
+              svg.appendChild(areaGradient);
+
+              const area = document.createElementNS("http://www.w3.org/2000/svg", "path");
+              area.setAttribute("d", areaPath);
+              area.setAttribute("fill", "url(#area-grad)");
+              area.classList.add("timeline-layer");
+              svg.appendChild(area);
+
               const strokePath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-              strokePath.setAttribute("d", dPath);
+              strokePath.setAttribute("d", linePath);
               strokePath.setAttribute("fill", "none");
               strokePath.setAttribute("stroke", "url(#line-grad)");
-              strokePath.setAttribute("stroke-width", "1.5");
+              strokePath.setAttribute("stroke-width", "1.25");
               strokePath.setAttribute("stroke-linecap", "round");
+              strokePath.classList.add("timeline-layer");
               svg.appendChild(strokePath);
+
+              const baseline = document.createElementNS("http://www.w3.org/2000/svg", "line");
+              baseline.setAttribute("x1", "0");
+              baseline.setAttribute("x2", String(width));
+              baseline.setAttribute("y1", String(height));
+              baseline.setAttribute("y2", String(height));
+              baseline.setAttribute("stroke", "#565B66");
+              baseline.setAttribute("stroke-opacity", "0.25");
+              baseline.setAttribute("stroke-width", "1");
+              baseline.classList.add("timeline-layer");
+              svg.appendChild(baseline);
+
+              const maxLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+              maxLabel.setAttribute("x", String(width - 2));
+              maxLabel.setAttribute("y", "8");
+              maxLabel.setAttribute("text-anchor", "end");
+              maxLabel.setAttribute("fill", "#8E959E");
+              maxLabel.setAttribute("font-size", "7");
+              maxLabel.setAttribute("font-family", "JetBrains Mono, monospace");
+              maxLabel.textContent = `max ${maxCount}`;
+              maxLabel.classList.add("timeline-layer");
+              svg.appendChild(maxLabel);
+
+              const minLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+              minLabel.setAttribute("x", String(width - 2));
+              minLabel.setAttribute("y", String(height - 2));
+              minLabel.setAttribute("text-anchor", "end");
+              minLabel.setAttribute("fill", "#8E959E");
+              minLabel.setAttribute("font-size", "7");
+              minLabel.setAttribute("font-family", "JetBrains Mono, monospace");
+              minLabel.textContent = "min 0";
+              minLabel.classList.add("timeline-layer");
+              svg.appendChild(minLabel);
+
+              const latest = timeline[timeline.length - 1]?.count ?? 0;
+              const latestLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+              latestLabel.setAttribute("x", "2");
+              latestLabel.setAttribute("y", "8");
+              latestLabel.setAttribute("text-anchor", "start");
+              latestLabel.setAttribute("fill", "#8E959E");
+              latestLabel.setAttribute("font-size", "7");
+              latestLabel.setAttribute("font-family", "JetBrains Mono, monospace");
+              latestLabel.textContent = `latest ${latest}`;
+              latestLabel.classList.add("timeline-layer");
+              svg.appendChild(latestLabel);
+
+              const latestDot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+              latestDot.setAttribute("cx", String(points[points.length - 1][0]));
+              latestDot.setAttribute("cy", String(points[points.length - 1][1]));
+              latestDot.setAttribute("r", "1.75");
+              latestDot.setAttribute("fill", "#E6B450");
+              latestDot.classList.add("timeline-layer");
+              svg.appendChild(latestDot);
             }
           }
         }
