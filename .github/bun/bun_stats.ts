@@ -296,14 +296,10 @@ export async function generateStats() {
   });
 
   const repoCounts: Record<string, number> = {};
-  const repoLanguages: Record<string, string> = {};
-
   if (user.currentYear.commitContributionsByRepository) {
     user.currentYear.commitContributionsByRepository.forEach(
       (repoContrib: any) => {
         const repoName = repoContrib.repository.name;
-        const lang = repoContrib.repository.primaryLanguage?.name || null;
-        if (lang) repoLanguages[repoName] = lang;
 
         repoContrib.contributions.nodes.forEach((node: any) => {
           const date = new Date(node.occurredAt);
@@ -322,11 +318,11 @@ export async function generateStats() {
   let monthlyFocusHtml = "Structuring <b>ideas</b> into reality.";
   if (focusSorted.length > 0) {
     const topRepo = focusSorted[0][0];
-    const topLang = repoLanguages[topRepo] || "Code";
+    const topLang = languages[0]?.name || "Code";
     const activityType = getActivityType(topLang);
     const monthName = new Date().toLocaleString("default", { month: "long" });
 
-    monthlyFocusHtml = `${monthName} saw a shift towards ${activityType}, with activity in <span class="text-accent tracking-wide">${topLang}</span> for <span class="text-accent tracking-wide">${topRepo}</span>.`;
+    monthlyFocusHtml = `${monthName} focus: <span class="text-accent tracking-wide">${topRepo}</span>, mostly <span class="text-accent tracking-wide">${topLang}</span> (${activityType}).`;
   }
 
   const chronicle = {
