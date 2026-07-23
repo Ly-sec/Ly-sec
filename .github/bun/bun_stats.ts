@@ -84,6 +84,16 @@ const query = `
             name
             primaryLanguage {
               name
+              color
+            }
+            languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+              edges {
+                size
+                node {
+                  name
+                  color
+                }
+              }
             }
           }
           contributions(first: 100) {
@@ -183,31 +193,90 @@ export async function generateStats() {
     })
     .filter(Boolean);
 
-  const languageStats: Record<string, { size: number; color: string }> = {};
-  let totalSize = 0;
+  // Linguistic Pulse: commit-weighted languages over the rolling year (not
+  // lifetime owned-repo byte size, which stays frozen on old large projects).
+  const languageStats: Record<string, { weight: number; color: string }> = {};
+  let totalWeight = 0;
 
-  user.repositories.nodes.forEach((repo: any) => {
-    if (repo.languages && repo.languages.edges) {
-      repo.languages.edges.forEach((edge: any) => {
-        const { size, node } = edge;
-        const { name, color } = node;
-        if (!languageStats[name]) {
-          languageStats[name] = { size: 0, color };
-        }
-        languageStats[name].size += size;
-        totalSize += size;
-      });
+  const addLanguageWeight = (
+    name: string,
+    color: string | null | undefined,
+    weight: number,
+  ) => {
+    if (weight <= 0) return;
+    if (!languageStats[name]) {
+      languageStats[name] = { weight: 0, color: color || "#ccc" };
     }
-  });
+    languageStats[name].weight += weight;
+    totalWeight += weight;
+  };
 
-  const languages = Object.entries(languageStats)
-    .map(([name, { size, color }]) => ({
+  if (user.currentYear.commitContributionsByRepository) {
+    user.currentYear.commitContributionsByRepository.forEach(
+      (repoContrib: any) => {
+        const commits = (repoContrib.contributions?.nodes || []).reduce(
+          (sum: number, node: any) => sum + (node.commitCount || 0),
+          0,
+        );
+        if (commits <= 0) return;
+
+        const edges = repoContrib.repository?.languages?.edges || [];
+        const repoLangSize = edges.reduce(
+          (sum: number, edge: any) => sum + (edge.size || 0),
+          0,
+        );
+
+        if (edges.length > 0 && repoLangSize > 0) {
+          edges.forEach((edge: any) => {
+            addLanguageWeight(
+              edge.node.name,
+              edge.node.color,
+              commits * (edge.size / repoLangSize),
+            );
+          });
+        } else {
+          const primary = repoContrib.repository?.primaryLanguage;
+          if (primary?.name) {
+            addLanguageWeight(primary.name, primary.color, commits);
+          }
+        }
+      },
+    );
+  }
+
+  // Fallback: owned-repo size mix if contribution language data is empty
+  if (totalWeight === 0) {
+    user.repositories.nodes.forEach((repo: any) => {
+      if (repo.languages?.edges) {
+        repo.languages.edges.forEach((edge: any) => {
+          addLanguageWeight(edge.node.name, edge.node.color, edge.size);
+        });
+      }
+    });
+  }
+
+  const ranked = Object.entries(languageStats)
+    .map(([name, { weight, color }]) => ({
       name,
-      percent: Math.round((size / totalSize) * 100),
+      weight,
       color: color || "#ccc",
     }))
-    .sort((a, b) => b.percent - a.percent)
+    .sort((a, b) => b.weight - a.weight)
     .slice(0, 5);
+
+  const rankedWeight = ranked.reduce((sum, lang) => sum + lang.weight, 0);
+  const languages = ranked.map((lang) => ({
+    name: lang.name,
+    percent:
+      rankedWeight > 0 ? Math.round((lang.weight / rankedWeight) * 100) : 0,
+    color: lang.color,
+  }));
+
+  // Fix rounding so the bars sum to 100
+  const percentSum = languages.reduce((sum, lang) => sum + lang.percent, 0);
+  if (languages.length > 0 && percentSum !== 100) {
+    languages[0].percent += 100 - percentSum;
+  }
 
   const mostUsedLanguage = languages.length > 0 ? languages[0] : null;
 
