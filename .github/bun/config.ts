@@ -1,5 +1,5 @@
 export const config = {
-  version: "0.1",
+  version: "0.2",
   username: "Ly-sec",
   pinned: [
     {
@@ -8,14 +8,14 @@ export const config = {
       topic: "Wayland Desktop Shell",
     },
     {
-      name: "dotfiles",
-      topic: "Personal Configuration",
-      language: "Shell/Lua/Nix",
-    },
-    {
       name: "nixos",
       topic: "Declarative System",
       language: "Nix",
+    },
+    {
+      name: "dotfiles",
+      topic: "Personal Configuration",
+      language: "Shell/Lua/Nix",
     },
     {
       name: "swiftfetch",
@@ -24,6 +24,6 @@ export const config = {
     },
   ],
   chronicle: {
-    stack: ["QML", "TypeScript", "C++", "Gentoo", "Emacs", "Wayland"],
+    stack: ["C", "C++", "NixOS", "Nim", "Emacs", "Wayland"],
   },
 };
