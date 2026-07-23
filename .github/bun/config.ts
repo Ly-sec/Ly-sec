@@ -4,8 +4,13 @@ export const config = {
   pinned: [
     {
       owner: "noctalia-dev",
-      name: "noctalia-shell",
+      name: "noctalia",
       topic: "Wayland Desktop Shell",
+    },
+    {
+      owner: "noctalia-dev",
+      name: "noctalia-greeter",
+      topic: "Greetd Greeter for Noctalia",
     },
     {
       name: "nixos",
@@ -16,11 +21,6 @@ export const config = {
       name: "dotfiles",
       topic: "Personal Configuration",
       language: "Shell/Lua/Nix",
-    },
-    {
-      name: "swiftfetch",
-      topic: "System Information Tool",
-      language: "C++",
     },
   ],
   chronicle: {
