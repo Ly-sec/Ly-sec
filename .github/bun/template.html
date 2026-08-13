@@ -3,264 +3,113 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Ly-sec GitHub Profile</title>
-  <link href="https://fonts.googleapis.com" rel="preconnect" />
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..200,0..1&display=swap"
-    rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            // Full Ayu Dark Palette
-            primary: "#E6B450", // Gold
-            secondary: "#AAD94C", // Green
-            tertiary: "#39BAE6", // Cyan
-            orange: "#FF8F40",
-            purple: "#D78AFE",
-            red: "#D95757",
-            surface: "#0B0E14",
-            onSurface: "#D1D1C7",
-            onSurfaceVariant: "#8E959E",
-            outline: "#565B66",
-            background: "#0B0E14",
-          },
-          fontFamily: {
-            sans: ["Inter", "sans-serif"],
-            mono: ["JetBrains Mono", "monospace"],
-            display: ["Space Grotesk", "sans-serif"],
-          },
-        },
-      },
-    };
-  </script>
+  <title>Ly-sec · Systems & Interface Engineering</title>
   <style>
+    :root {
+      --ink: #20242b;
+      --muted: #69717c;
+      --line: #dfe3e8;
+      --paper: #f1f3f2;
+      --panel: #ffffff;
+      --accent: #b5882e;
+      --accent-soft: #f6ecd6;
+      --green: #526b73;
+    }
+    * { box-sizing: border-box; }
     body {
-      background-color: #0B0E14;
-      color: #D1D1C7;
-      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-      background-image: 
-        radial-gradient(circle at 2px 2px, rgba(86, 91, 102, 0.05) 1px, transparent 0);
-      background-size: 32px 32px;
+      margin: 0;
+      min-width: 1120px;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
-    .editorial-border {
-      border-color: rgba(86, 91, 102, 0.3);
-    }
-    .scifi-corner {
-      position: relative;
-    }
-    .scifi-corner::before {
-      content: "";
-      position: absolute;
-      top: -1px; left: -1px; width: 8px; height: 8px;
-      border-top: 2px solid var(--tw-border-opacity, #565B66);
-      border-left: 2px solid var(--tw-border-opacity, #565B66);
-    }
-    .text-balance {
-      text-wrap: balance;
-    }
-    .glow-primary {
-      filter: drop-shadow(0 0 12px rgba(230, 180, 80, 0.4));
-    }
-    .glow-tertiary {
-      filter: drop-shadow(0 0 8px rgba(57, 186, 230, 0.3));
-    }
-    .glow-secondary {
-      filter: drop-shadow(0 0 8px rgba(170, 217, 76, 0.3));
-    }
-    .hud-line {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(86, 91, 102, 0.3), transparent);
-    }
+    .page { width: 1120px; margin: 0 auto; padding: 58px 64px 54px; }
+    .eyebrow, .label, .meta { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .eyebrow { color: var(--accent); }
+    .meta { color: var(--muted); font-weight: 600; letter-spacing: .1em; }
+    header { display: grid; grid-template-columns: 1fr 260px; gap: 72px; padding: 8px 0 50px; }
+    h1, h2, h3, p { margin: 0; }
+    h1 { margin-top: 13px; font-size: 65px; line-height: .98; letter-spacing: -.055em; }
+    .role { margin-top: 15px; font-size: 20px; font-weight: 600; color: var(--accent); }
+    .intro { max-width: 640px; margin-top: 25px; font-size: 20px; line-height: 1.52; color: #455363; }
+    .profile { display: flex; gap: 18px; align-items: center; align-self: end; }
+    .avatar { width: 80px; height: 80px; border-radius: 50%; border: 1px solid var(--line); padding: 4px; background: var(--panel); object-fit: cover; }
+    .profile-copy { display: grid; gap: 5px; }
+    .profile-copy strong { font-size: 15px; }
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .fact { padding: 24px 25px 24px 0; border-right: 1px solid var(--line); }
+    .fact + .fact { padding-left: 25px; }
+    .fact:last-child { border-right: 0; }
+    .fact-value { margin-top: 7px; font-size: 32px; font-weight: 700; letter-spacing: -.045em; }
+    .fact-note { margin-top: 4px; color: var(--muted); font-size: 13px; }
+    main { padding-top: 50px; }
+    .section-heading { display: flex; align-items: center; gap: 18px; margin-bottom: 22px; }
+    .section-heading h2 { color: var(--muted); font-size: 12px; letter-spacing: .13em; text-transform: uppercase; }
+    .section-heading::after { content: ""; height: 1px; flex: 1; background: var(--line); }
+    .focus-grid { display: grid; grid-template-columns: 1.45fr 1fr; gap: 54px; padding-bottom: 50px; }
+    .focus-text { font-size: 24px; line-height: 1.42; letter-spacing: -.025em; }
+    .focus-text strong { color: var(--accent); font-weight: 650; }
+    .stack { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; align-content: start; }
+    .tag { padding: 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--panel); color: #4b5a68; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .project { min-height: 190px; padding: 24px; border: 1px solid var(--line); border-radius: 7px; background: var(--panel); display: flex; flex-direction: column; }
+    .project-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .project-topic { color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+    .project-stars { color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; white-space: nowrap; }
+    h3 { margin-top: 19px; font-size: 21px; letter-spacing: -.025em; }
+    .project-description { margin-top: 10px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+    .project-language { margin-top: auto; padding-top: 21px; color: var(--green); font-size: 12px; font-weight: 650; }
+    .language-section { margin-top: 48px; }
+    .languages { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    .language { border-top: 3px solid var(--accent); padding-top: 11px; }
+    .language-name { font-size: 14px; font-weight: 650; }
+    .language-percent { margin-top: 4px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
   </style>
 </head>
-
-<body class="font-sans antialiased min-h-screen flex flex-col items-center justify-center p-16">
-  <div class="w-full max-w-[1100px] flex flex-col gap-20 relative">
-    
-    <!-- Top Nav / Meta -->
-    <div class="flex justify-between items-center font-mono text-[9px] uppercase tracking-[0.5em] text-onSurfaceVariant opacity-50">
-      <span>Profile Manifest v<span id="manifest_version">0.0</span></span>
-      <span>Last Sync: <span id="current_date">00 MAR 2026</span></span>
-    </div>
-
-    <!-- Header Section -->
-    <header class="grid grid-cols-12 gap-12 items-center relative">
-      <div class="absolute -top-10 -left-10 w-40 h-40 bg-tertiary/5 rounded-full blur-[80px]"></div>
-      <div class="col-span-12 lg:col-span-7 flex items-center gap-12">
-        <div class="relative group">
-          <div class="w-40 h-40 rounded-sm overflow-hidden border border-outline/30 p-1 group-hover:border-primary/50 transition-all duration-700 bg-surface">
-            <img id="avatar" alt="Profile" class="w-full h-full object-cover rounded-sm transition-all duration-1000 scale-100 group-hover:scale-105" src="https://github.com/Ly-sec.png" />
-          </div>
-          <div class="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-primary/60"></div>
-          <div class="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-tertiary/60"></div>
-        </div>
-        
-        <div class="flex flex-col">
-          <div class="flex items-center gap-4 mb-3">
-             <span class="h-px w-8 bg-primary"></span>
-             <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-primary font-bold">Systems Architect</span>
-          </div>
-          <h1 class="font-display text-8xl font-bold tracking-tighter text-onSurface leading-none mb-6">
-            Ly<span class="text-primary">sec</span>
-          </h1>
-          <p class="font-display text-lg text-onSurfaceVariant max-w-md leading-relaxed">
-            Building elegant system environments and minimal user interfaces with a focus on <span class="text-onSurface font-medium">clarity</span>.
-          </p>
-        </div>
+<body>
+  <div class="page">
+    <header>
+      <div>
+        <div class="eyebrow">Ly-sec</div>
+        <h1>Systems built with<br />care and clarity.</h1>
+        <p class="role">Systems &amp; interface engineering</p>
+        <p class="intro">I design thoughtful open-source software across the Linux desktop stack, from reproducible infrastructure to focused, approachable user interfaces.</p>
       </div>
-      
-      <div class="col-span-12 lg:col-span-5 grid grid-cols-3 gap-8">
-        <div class="flex flex-col gap-2 group">
-          <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-tertiary text-sm glow-tertiary">terminal</span>
-            <span class="font-mono text-[9px] uppercase tracking-widest text-onSurfaceVariant">Projects</span>
-          </div>
-          <span class="font-display text-4xl font-bold text-onSurface group-hover:text-tertiary transition-colors" id="total_repos">00</span>
-        </div>
-        <div class="flex flex-col gap-2 group">
-          <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-primary text-sm glow-primary">star</span>
-            <span class="font-mono text-[9px] uppercase tracking-widest text-onSurfaceVariant">Stellar</span>
-          </div>
-          <span class="font-display text-4xl font-bold text-onSurface group-hover:text-primary transition-colors" id="total_stars">0</span>
-        </div>
-        <div class="flex flex-col gap-2 group">
-          <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-secondary text-sm glow-secondary">public</span>
-            <span class="font-mono text-[9px] uppercase tracking-widest text-onSurfaceVariant">Network</span>
-          </div>
-          <span class="font-display text-4xl font-bold text-onSurface group-hover:text-secondary transition-colors" id="total_followers">0</span>
+      <div class="profile">
+        <img id="avatar" class="avatar" alt="Ly-sec" src="https://github.com/Ly-sec.png" />
+        <div class="profile-copy">
+          <strong>Ly-sec</strong>
+          <span class="meta">Systems &amp; interface engineering</span>
         </div>
       </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="flex flex-col gap-24">
-      
-      <!-- Top Row: Focus & Dialects -->
-      <div class="grid grid-cols-12 gap-16">
-        <!-- Focus -->
-        <section class="col-span-12 lg:col-span-8 flex flex-col gap-8">
-          <div class="flex items-center gap-4">
-            <h2 class="font-display text-xs uppercase tracking-[0.5em] text-onSurfaceVariant font-bold">Current Trajectory</h2>
-            <div class="h-px flex-1 bg-outline/20"></div>
-          </div>
-          <p class="font-display text-3xl font-light leading-snug text-onSurface text-balance" id="chronicle_focus_container">
-            Currently deep in <span class="text-purple italic">Wayland</span> protocols and <span class="text-orange">NixOS</span> kernel optimizations.
-          </p>
-          
-          <!-- New: Active Environment -->
-          <div class="grid grid-cols-3 gap-6 mt-8 pt-8 border-t border-outline/10">
-            <div class="flex flex-col gap-1">
-              <span class="font-mono text-[8px] uppercase tracking-widest text-onSurfaceVariant">Distro</span>
-              <span class="font-display text-sm font-bold text-onSurface">NixOS</span>
-            </div>
-            <div class="flex flex-col gap-1">
-              <span class="font-mono text-[8px] uppercase tracking-widest text-onSurfaceVariant">Interface</span>
-              <span class="font-display text-sm font-bold text-onSurface">Noctalia Shell</span>
-            </div>
-            <div class="flex flex-col gap-1">
-              <span class="font-mono text-[8px] uppercase tracking-widest text-onSurfaceVariant">Compositor</span>
-              <span class="font-display text-sm font-bold text-onSurface">Niri</span>
-            </div>
-          </div>
-        </section>
+    <section class="facts" aria-label="GitHub overview">
+      <div class="fact"><div class="label">Public repositories</div><div class="fact-value" id="total_repos">0</div><div class="fact-note">Open-source projects</div></div>
+      <div class="fact"><div class="label">Stars earned</div><div class="fact-value" id="total_stars">0</div><div class="fact-note">Across owned repositories</div></div>
+      <div class="fact"><div class="label">Community</div><div class="fact-value" id="total_followers">0</div><div class="fact-note">GitHub followers</div></div>
+    </section>
 
-        <!-- Dialects -->
-        <section class="col-span-12 lg:col-span-4 flex flex-col gap-8">
-          <h2 class="font-display text-[10px] uppercase tracking-[0.5em] text-onSurfaceVariant font-bold">Linguistic Pulse</h2>
-          <div class="flex flex-col gap-5" id="chronicle_dialects">
-             <!-- Populated by JS -->
-          </div>
-        </section>
-      </div>
-
-      <!-- Bottom Row: Projects & Metrics -->
-      <div class="grid grid-cols-12 gap-16 items-stretch">
-        <!-- Selected Projects -->
-        <section class="col-span-12 lg:col-span-8 flex flex-col gap-10">
-           <h2 class="font-display text-[10px] uppercase tracking-[0.5em] text-onSurfaceVariant font-bold">Featured Repositories</h2>
-           <div class="grid grid-cols-1 md:grid-cols-2 gap-10 h-full" id="pinned_container">
-             <!-- Populated by JS -->
-           </div>
-        </section>
-
-        <!-- Metrics & Stack -->
-        <section class="col-span-12 lg:col-span-4 flex flex-col gap-10">
-          <h2 class="font-display text-[10px] uppercase tracking-[0.5em] text-onSurfaceVariant font-bold">Contribution Metrics</h2>
-          <div class="flex-1 flex flex-col gap-6 p-6 rounded-sm border border-outline/20 bg-surfaceVariant/5 relative overflow-hidden h-full">
-            <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-3xl"></div>
-            
-            <div class="flex justify-between items-center mb-1">
-              <span class="font-mono text-[9px] uppercase tracking-widest text-onSurfaceVariant">Contribution Growth</span>
-              <span class="material-symbols-outlined text-secondary text-sm">trending_up</span>
-            </div>
-            <div class="flex flex-col gap-2">
-              <span class="font-display text-5xl font-bold text-onSurface leading-none" id="chronicle_total_vol">0,000</span>
-              <div class="flex items-center gap-3">
-                 <span class="font-mono text-[9px] text-secondary font-bold" id="chronicle_growth">--</span>
-              </div>
-            </div>
-            
-            <div class="grid grid-cols-2 gap-4 mt-auto pt-4 border-t editorial-border">
-              <div class="flex flex-col">
-                <span class="font-mono text-[9px] text-onSurfaceVariant uppercase leading-none mb-1">Streak</span>
-                <span class="font-display text-xl font-bold text-orange" id="chronicle_streak">0</span>
-              </div>
-              <div class="flex flex-col">
-                <span class="font-mono text-[9px] text-onSurfaceVariant uppercase leading-none mb-1">Peak</span>
-                <span class="font-display text-xl font-bold text-tertiary" id="chronicle_peak_date">--</span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Stack tags -->
-          <div class="flex flex-wrap gap-2 mt-auto" id="chronicle_stack"></div>
-        </section>
-      </div>
-
-      <!-- Graph Row -->
-      <section class="flex flex-col gap-4 opacity-40 hover:opacity-100 transition-opacity duration-700">
-         <div class="flex justify-between items-center font-mono text-[8px] uppercase tracking-[0.3em] text-onSurfaceVariant">
-           <span>Contribution Signal (Rolling 365 Days)</span>
-           <span>Raw Daily Counts</span>
-         </div>
-         <div class="h-20 w-full relative">
-            <svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 1000 80" id="chronicle_svg">
-              <defs>
-                <linearGradient id="line-grad" x1="0" x2="1" y1="0" y2="0">
-                  <stop offset="0%" stop-color="#39BAE6"></stop>
-                  <stop offset="33%" stop-color="#D78AFE"></stop>
-                  <stop offset="66%" stop-color="#E6B450"></stop>
-                  <stop offset="100%" stop-color="#AAD94C"></stop>
-                </linearGradient>
-              </defs>
-            </svg>
-         </div>
+    <main>
+      <section>
+        <div class="section-heading"><h2>What I work on</h2></div>
+        <div class="focus-grid">
+          <p class="focus-text">My work centers on <strong>Linux desktop experiences</strong>, declarative systems, and the details that turn powerful tooling into a coherent daily environment.</p>
+          <div class="stack" id="chronicle_stack"></div>
+        </div>
       </section>
 
-    </main>
+      <section>
+        <div class="section-heading"><h2>Selected work</h2></div>
+        <div class="projects" id="pinned_container"></div>
+      </section>
 
-    <!-- Footer meta -->
-    <footer class="flex justify-between items-center pt-12 border-t editorial-border font-mono text-[9px] tracking-[0.2em] text-onSurfaceVariant">
-      <div class="flex items-center gap-4">
-        <span class="text-primary">●</span>
-        <span>Ayu Dark</span>
-        <span class="opacity-30">/</span>
-        <span>FOSS</span>
-      </div>
-      <div class="flex flex-col items-end">
-        <span>&copy; <span id="copyright_year">2026</span> Ly-sec</span>
-      </div>
-    </footer>
+      <section class="language-section">
+        <div class="section-heading"><h2>Recent technical focus</h2></div>
+        <div class="languages" id="chronicle_dialects"></div>
+      </section>
+    </main>
 
   </div>
 
@@ -268,213 +117,27 @@
     async function render() {
       try {
         let data = window.profileData;
-        if (!data) {
-          const res = await fetch("/data.json");
-          data = await res.json();
-        }
+        if (!data) data = await (await fetch("/data.json")).json();
+        const formatNumber = (value) => new Intl.NumberFormat("en-US", { notation: value >= 1000 ? "compact" : "standard", maximumFractionDigits: 1 }).format(value || 0);
+        document.getElementById("total_repos").textContent = data.hero?.total_repos ?? "0";
+        document.getElementById("total_stars").textContent = formatNumber(data.hero?.total_stars);
+        document.getElementById("total_followers").textContent = data.hero?.total_followers ?? "0";
 
-        const formatStars = (count) => {
-          if (count < 1000) return count.toString();
-          return (count / 1000).toFixed(1) + "k";
-        };
-        
-        if (data.config && data.config.version) {
-          document.getElementById("manifest_version").innerText = data.config.version;
-        }
+        const projects = document.getElementById("pinned_container");
+        projects.innerHTML = (data.pinned || []).slice(0, 4).map((repo) => `
+          <article class="project">
+            <div class="project-top"><span class="project-topic">${repo.topic || "Open-source project"}</span><span class="project-stars">★ ${formatNumber(repo.stars)}</span></div>
+            <h3>${repo.title}</h3>
+            <p class="project-description">${repo.description || "Open-source development in progress."}</p>
+            <div class="project-language">${repo.language || "Open source"}</div>
+          </article>`).join("");
 
-        const now = new Date();
-        const day = String(now.getDate()).padStart(2, '0');
-        const month = now.toLocaleString("default", { month: "short" }).toUpperCase();
-        const year = now.getFullYear();
-        document.getElementById("current_date").innerText = `${day} ${month} ${year}`;
-
-        if (document.getElementById("copyright_year")) {
-          document.getElementById("copyright_year").innerText = year;
-        }
-
-        if (data.hero) {
-          document.getElementById("total_repos").innerText = data.hero.total_repos || "00";
-          document.getElementById("total_stars").innerText = formatStars(data.hero.total_stars || 0);
-          document.getElementById("total_followers").innerText = data.hero.total_followers || "0";
-        }
-
-        if (data.pinned && data.pinned.length > 0) {
-          const container = document.getElementById("pinned_container");
-          container.innerHTML = "";
-          data.pinned.slice(0, 4).forEach((repo) => {
-            container.innerHTML += `
-              <div class="flex flex-col gap-3 p-4 rounded-sm border border-outline/10 hover:border-primary/30 transition-all duration-500 bg-surfaceVariant/5 group relative">
-                <div class="flex justify-between items-center relative z-10">
-                  <span class="font-mono text-[8px] tracking-[0.2em] text-primary font-bold uppercase border-b border-primary/20 pb-0.5">${repo.topic || "PROJECT"}</span>
-                  <div class="flex items-center gap-1.5 text-onSurfaceVariant text-[9px] font-mono">
-                     <span class="material-symbols-outlined text-[11px] fill-primary text-primary">star</span>
-                     <span>${formatStars(repo.stars)}</span>
-                  </div>
-                </div>
-                <h3 class="font-display text-xl font-bold text-onSurface leading-tight group-hover:text-primary transition-colors">${repo.title}</h3>
-                <p class="font-sans text-[11px] text-onSurfaceVariant leading-relaxed h-[3.25rem] line-clamp-3">${repo.description || "Experimental development in progress."}</p>
-                <div class="mt-auto"></div>
-              </div>
-            `;
-          });
-        }
-
-        if (data.chronicle) {
-          const c = data.chronicle;
-          document.getElementById("chronicle_total_vol").innerText = c.total_contribution_volume.toLocaleString();
-          document.getElementById("chronicle_growth").innerText = `${c.growth_percentage > 0 ? '+' : ''}${c.growth_percentage}`;
-          document.getElementById("chronicle_streak").innerText = c.current_streak;
-          document.getElementById("chronicle_peak_date").innerText = c.peak_activity_day.date;
-          
-          if (c.monthly_focus_html) {
-            document.getElementById("chronicle_focus_container").innerHTML = c.monthly_focus_html;
-          }
-
-          const stackContainer = document.getElementById("chronicle_stack");
-          const stack = c.stack || ["NixOS", "Emacs"];
-          stackContainer.innerHTML = stack.map(s => `
-            <span class="px-2 py-0.5 border border-outline/20 rounded-sm font-mono text-[8px] uppercase tracking-widest text-onSurfaceVariant bg-surfaceVariant/10">${s}</span>
-          `).join("");
-
-          const dialectsContainer = document.getElementById("chronicle_dialects");
-          dialectsContainer.innerHTML = "";
-          if (c.languages) {
-            const colors = ["#E6B450", "#AAD94C", "#39BAE6", "#FF8F40", "#D78AFE"];
-            c.languages.forEach((lang, idx) => {
-              const color = colors[idx % colors.length];
-              dialectsContainer.innerHTML += `
-                <div class="flex flex-col gap-2 group">
-                  <div class="flex justify-between items-end">
-                    <div class="flex items-center gap-3">
-                       <div class="w-1.5 h-1.5 rounded-full" style="background-color: ${color}"></div>
-                       <span class="font-mono text-[10px] text-onSurface font-bold uppercase tracking-widest">${lang.name}</span>
-                    </div>
-                    <span class="font-mono text-[9px] text-onSurfaceVariant group-hover:text-onSurface transition-colors">${lang.percent}%</span>
-                  </div>
-                  <div class="h-[2px] w-full bg-outline/10 rounded-full overflow-hidden">
-                    <div class="h-full transition-all duration-1000 ease-out" style="width: ${lang.percent}%; background-color: ${color}"></div>
-                  </div>
-                </div>
-              `;
-            });
-          }
-
-          if (c.stats && c.stats.timeline) {
-            const svg = document.getElementById("chronicle_svg");
-            const width = 1000;
-            const height = 80;
-            const timeline = c.stats.timeline;
-
-            if (timeline.length > 0) {
-              // Keep defs, clear previous rendered paths if rerendering.
-              Array.from(svg.querySelectorAll(".timeline-layer")).forEach((el) => el.remove());
-              const maxCount = Math.max(...timeline.map((d) => d.count), 1);
-              const stepX = width / (timeline.length - 1);
-              let points = timeline.map((d, i) => [
-                i * stepX,
-                height - (d.count / maxCount) * (height - 5),
-              ]);
-
-              let linePath = `M ${points[0][0]},${points[0][1]}`;
-              for (let i = 1; i < points.length; i++) {
-                linePath += ` L ${points[i][0]},${points[i][1]}`;
-              }
-
-              let areaPath = `${linePath} L ${points[points.length - 1][0]},${height} L 0,${height} Z`;
-
-              const areaGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
-              areaGradient.setAttribute("id", "area-grad");
-              areaGradient.setAttribute("x1", "0");
-              areaGradient.setAttribute("x2", "0");
-              areaGradient.setAttribute("y1", "0");
-              areaGradient.setAttribute("y2", "1");
-              areaGradient.classList.add("timeline-layer");
-
-              const stopTop = document.createElementNS("http://www.w3.org/2000/svg", "stop");
-              stopTop.setAttribute("offset", "0%");
-              stopTop.setAttribute("stop-color", "#39BAE6");
-              stopTop.setAttribute("stop-opacity", "0.25");
-              const stopBottom = document.createElementNS("http://www.w3.org/2000/svg", "stop");
-              stopBottom.setAttribute("offset", "100%");
-              stopBottom.setAttribute("stop-color", "#39BAE6");
-              stopBottom.setAttribute("stop-opacity", "0.02");
-              areaGradient.appendChild(stopTop);
-              areaGradient.appendChild(stopBottom);
-              svg.appendChild(areaGradient);
-
-              const area = document.createElementNS("http://www.w3.org/2000/svg", "path");
-              area.setAttribute("d", areaPath);
-              area.setAttribute("fill", "url(#area-grad)");
-              area.classList.add("timeline-layer");
-              svg.appendChild(area);
-
-              const strokePath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-              strokePath.setAttribute("d", linePath);
-              strokePath.setAttribute("fill", "none");
-              strokePath.setAttribute("stroke", "url(#line-grad)");
-              strokePath.setAttribute("stroke-width", "1.25");
-              strokePath.setAttribute("stroke-linecap", "round");
-              strokePath.classList.add("timeline-layer");
-              svg.appendChild(strokePath);
-
-              const baseline = document.createElementNS("http://www.w3.org/2000/svg", "line");
-              baseline.setAttribute("x1", "0");
-              baseline.setAttribute("x2", String(width));
-              baseline.setAttribute("y1", String(height));
-              baseline.setAttribute("y2", String(height));
-              baseline.setAttribute("stroke", "#565B66");
-              baseline.setAttribute("stroke-opacity", "0.25");
-              baseline.setAttribute("stroke-width", "1");
-              baseline.classList.add("timeline-layer");
-              svg.appendChild(baseline);
-
-              const maxLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
-              maxLabel.setAttribute("x", String(width - 2));
-              maxLabel.setAttribute("y", "8");
-              maxLabel.setAttribute("text-anchor", "end");
-              maxLabel.setAttribute("fill", "#8E959E");
-              maxLabel.setAttribute("font-size", "7");
-              maxLabel.setAttribute("font-family", "JetBrains Mono, monospace");
-              maxLabel.textContent = `max ${maxCount}`;
-              maxLabel.classList.add("timeline-layer");
-              svg.appendChild(maxLabel);
-
-              const minLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
-              minLabel.setAttribute("x", String(width - 2));
-              minLabel.setAttribute("y", String(height - 2));
-              minLabel.setAttribute("text-anchor", "end");
-              minLabel.setAttribute("fill", "#8E959E");
-              minLabel.setAttribute("font-size", "7");
-              minLabel.setAttribute("font-family", "JetBrains Mono, monospace");
-              minLabel.textContent = "min 0";
-              minLabel.classList.add("timeline-layer");
-              svg.appendChild(minLabel);
-
-              const latest = timeline[timeline.length - 1]?.count ?? 0;
-              const latestLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
-              latestLabel.setAttribute("x", "2");
-              latestLabel.setAttribute("y", "8");
-              latestLabel.setAttribute("text-anchor", "start");
-              latestLabel.setAttribute("fill", "#8E959E");
-              latestLabel.setAttribute("font-size", "7");
-              latestLabel.setAttribute("font-family", "JetBrains Mono, monospace");
-              latestLabel.textContent = `latest ${latest}`;
-              latestLabel.classList.add("timeline-layer");
-              svg.appendChild(latestLabel);
-
-              const latestDot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-              latestDot.setAttribute("cx", String(points[points.length - 1][0]));
-              latestDot.setAttribute("cy", String(points[points.length - 1][1]));
-              latestDot.setAttribute("r", "1.75");
-              latestDot.setAttribute("fill", "#E6B450");
-              latestDot.classList.add("timeline-layer");
-              svg.appendChild(latestDot);
-            }
-          }
-        }
-      } catch (e) {
-        console.error("Error loading data", e);
-      }
+        const stack = data.chronicle?.stack || [];
+        document.getElementById("chronicle_stack").innerHTML = stack.map((item) => `<span class="tag">${item}</span>`).join("");
+        const palette = ["#b5882e", "#526b73", "#707984", "#89919a", "#a2a8af"];
+        document.getElementById("chronicle_dialects").innerHTML = (data.chronicle?.languages || []).slice(0, 5).map((language, index) => `
+          <div class="language" style="border-color:${palette[index]}"><div class="language-name">${language.name}</div><div class="language-percent">${language.percent}% of recent work</div></div>`).join("");
+      } catch (error) { console.error("Unable to render profile", error); }
     }
     render();
   </script>

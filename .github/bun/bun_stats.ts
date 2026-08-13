@@ -3,10 +3,6 @@ import { file } from "bun";
 import { config } from "./config";
 
 const token = process.env.TOKEN || process.env.GITHUB_TOKEN;
-if (!token) {
-  console.error("GITHUB_TOKEN is missing!");
-  process.exit(1);
-}
 
 const username = config.username;
 
@@ -134,6 +130,10 @@ function getActivityType(language: string | null): string {
 }
 
 async function fetchData(username: string) {
+  if (!token) {
+    throw new Error("GITHUB_TOKEN is missing!");
+  }
+
   const response = await fetch("https://api.github.com/graphql", {
     method: "POST",
     headers: {

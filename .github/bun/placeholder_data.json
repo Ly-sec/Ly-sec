@@ -1,0 +1,48 @@
+{
+  "hero": {
+    "total_repos": 15,
+    "total_stars": 184,
+    "total_followers": 115
+  },
+  "pinned": [
+    {
+      "title": "noctalia",
+      "topic": "Wayland desktop shell",
+      "description": "A sleek, customizable desktop shell crafted for Wayland.",
+      "stars": 9500,
+      "language": "C++"
+    },
+    {
+      "title": "noctalia-greeter",
+      "topic": "Greetd greeter for Noctalia",
+      "description": "A focused greeter for a cohesive Linux desktop experience.",
+      "stars": 215,
+      "language": "C++"
+    },
+    {
+      "title": "nixos",
+      "topic": "Declarative system",
+      "description": "Reproducible system configuration and infrastructure.",
+      "stars": 120,
+      "language": "Nix"
+    },
+    {
+      "title": "dotfiles",
+      "topic": "Personal configuration",
+      "description": "A carefully maintained daily development environment.",
+      "stars": 16,
+      "language": "Shell"
+    }
+  ],
+  "chronicle": {
+    "stack": ["C", "C++", "NixOS", "Nim", "Emacs", "Wayland"],
+    "languages": [
+      { "name": "C++", "percent": 63 },
+      { "name": "MDX", "percent": 19 },
+      { "name": "QML", "percent": 12 },
+      { "name": "CSS", "percent": 4 },
+      { "name": "Shell", "percent": 2 }
+    ]
+  },
+  "config": { "version": "0.2" }
+}

@@ -6,12 +6,22 @@ import { generateStats } from "./bun_stats";
 
 const TEMPLATE_PATH = join(import.meta.dir, "template.html");
 const OUTPUT_PATH = join(import.meta.dir, "../../profile.svg");
+const PLACEHOLDER_DATA_PATH = join(import.meta.dir, "placeholder_data.json");
 
 console.log("🚀 Starting SVG Export process (File-less mode)...");
 
 try {
-  console.log("📊 Fetching GitHub statistics...");
-  const stats = await generateStats();
+  const fixturePath = process.env.PROFILE_DATA_FILE;
+  const hasToken = Boolean(process.env.TOKEN || process.env.GITHUB_TOKEN);
+  const dataPath = fixturePath || (!hasToken ? PLACEHOLDER_DATA_PATH : undefined);
+  console.log(
+    dataPath
+      ? "📊 Loading placeholder profile data..."
+      : "📊 Fetching GitHub statistics...",
+  );
+  const stats = dataPath
+    ? JSON.parse(await file(dataPath).text())
+    : await generateStats();
 
   const server = serve({
     port: 3005,
