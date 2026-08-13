@@ -193,8 +193,9 @@ export async function generateStats() {
     })
     .filter(Boolean);
 
-  // Linguistic Pulse: commit-weighted languages over the rolling year (not
-  // lifetime owned-repo byte size, which stays frozen on old large projects).
+  // Attribute each contribution to the repository's primary language. Splitting
+  // commits by every file type in a repository makes incidental CSS, docs, and
+  // generated files appear as primary work.
   const languageStats: Record<string, { weight: number; color: string }> = {};
   let totalWeight = 0;
 
@@ -220,37 +221,20 @@ export async function generateStats() {
         );
         if (commits <= 0) return;
 
-        const edges = repoContrib.repository?.languages?.edges || [];
-        const repoLangSize = edges.reduce(
-          (sum: number, edge: any) => sum + (edge.size || 0),
-          0,
-        );
-
-        if (edges.length > 0 && repoLangSize > 0) {
-          edges.forEach((edge: any) => {
-            addLanguageWeight(
-              edge.node.name,
-              edge.node.color,
-              commits * (edge.size / repoLangSize),
-            );
-          });
-        } else {
-          const primary = repoContrib.repository?.primaryLanguage;
-          if (primary?.name) {
-            addLanguageWeight(primary.name, primary.color, commits);
-          }
+        const primary = repoContrib.repository?.primaryLanguage;
+        if (primary?.name) {
+          addLanguageWeight(primary.name, primary.color, commits);
         }
       },
     );
   }
 
-  // Fallback: owned-repo size mix if contribution language data is empty
+  // Fallback: owned-repository primary languages if contribution data is empty.
   if (totalWeight === 0) {
     user.repositories.nodes.forEach((repo: any) => {
-      if (repo.languages?.edges) {
-        repo.languages.edges.forEach((edge: any) => {
-          addLanguageWeight(edge.node.name, edge.node.color, edge.size);
-        });
+      const primary = repo.primaryLanguage;
+      if (primary?.name) {
+        addLanguageWeight(primary.name, primary.color, 1);
       }
     });
   }
