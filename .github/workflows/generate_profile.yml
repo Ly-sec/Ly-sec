@@ -1,6 +1,9 @@
 name: Generate Profile Portfolio
 
 on:
+  push:
+    paths:
+      - ".github/bun/**"
   schedule:
     - cron: "0 0 * * *" # Daily at midnight
   workflow_dispatch: # Allow manual trigger
