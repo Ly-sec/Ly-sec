@@ -9,6 +9,11 @@ export const config = {
     },
     {
       owner: "noctalia-dev",
+      name: "umbriel",
+      topic: "Wayland Compositor",
+    },
+    {
+      owner: "noctalia-dev",
       name: "noctalia-greeter",
       topic: "Greetd Greeter for Noctalia",
     },
@@ -16,11 +21,6 @@ export const config = {
       name: "nixos",
       topic: "Declarative System",
       language: "Nix",
-    },
-    {
-      name: "dotfiles",
-      topic: "Personal Configuration",
-      language: "Shell/Lua/Nix",
     },
   ],
   chronicle: {

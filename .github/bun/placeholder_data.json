@@ -13,6 +13,13 @@
       "language": "C++"
     },
     {
+      "title": "umbriel",
+      "topic": "Wayland compositor",
+      "description": "A Wayland compositor built for the Noctalia desktop experience.",
+      "stars": 640,
+      "language": "C++"
+    },
+    {
       "title": "noctalia-greeter",
       "topic": "Greetd greeter for Noctalia",
       "description": "A focused greeter for a cohesive Linux desktop experience.",
@@ -25,13 +32,6 @@
       "description": "Reproducible system configuration and infrastructure.",
       "stars": 120,
       "language": "Nix"
-    },
-    {
-      "title": "dotfiles",
-      "topic": "Personal configuration",
-      "description": "A carefully maintained daily development environment.",
-      "stars": 16,
-      "language": "Shell"
     }
   ],
   "chronicle": {
